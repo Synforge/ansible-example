@@ -1,0 +1,72 @@
+---
+
+mysql_root_pass: default
+
+mysql_repl_users: []
+mysql_users: []
+mysql_db: []
+
+mysql_options:
+  #General
+  user: mysql
+  port: 3306
+  default_storage_engine: InnoDB
+  socket: /var/lib/mysql/mysql.sock
+  pid_file: /var/run/mysqld/mysql.pid
+  server_id: 1
+  skip_host_cache: true
+  skip_name_resolve: true
+  innodb: force
+
+  #Myisam
+  key_buffer_size: 32M
+
+  #Safeguards
+  max_allowed_packet: 1048576
+  max_connect_errors: 100
+  sql_mode: "''"
+
+  #Data
+  datadir: /var/lib/mysql
+
+  #Binlogs
+  log_bin: /var/lib/mysql/mysql-bin
+  expire_logs_days: 0
+  sync_binlog: 0
+
+  # Replication
+  relay_log: /var/lib/mysql/mysql-relay
+  slave_net_timeout: 3600
+  replicate_same_server_id: 0
+  auto_increment_increment: 2
+  auto_increment_offset: 1
+  log_slave_updates: true
+  skip_slave_start: false
+  slave_parallel_workers: 0
+  replicate_wild_do_table: "%DB.%"
+
+  # Caching
+  query_cache_type: 1
+  query_cache_size: 0
+  max_connections: 151
+  thread_cache_size: 0
+  table_definition_cache: 256
+  table_open_cache: 64
+
+  #InnoDB
+  innodb_flush_method: fdatasync
+  innodb_log_files_in_group: 2
+  innodb_log_file_size: 5M
+  innodb_log_buffer_size: 5M
+  innodb_flush_log_at_trx_commit: 1
+  innodb_buffer_pool_size: 128M
+  innodb_io_capacity: 200
+  innodb_buffer_pool_instances: 1
+  innodb_file_per_table: 1
+
+  #Logs
+  log_error: /var/log/mysql-error.log
+  log_queries_not_using_indexes: 0
+  slow_query_log: 0
+  long_query_time: 10
+  slow_query_log_file: /var/log/mysql-slow.log

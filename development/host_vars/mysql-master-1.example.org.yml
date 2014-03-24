@@ -1,0 +1,4 @@
+---
+
+mysql_opts:
+  server_id: 100

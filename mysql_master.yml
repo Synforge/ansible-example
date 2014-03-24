@@ -1,0 +1,12 @@
+---
+- hosts: mysql_master
+
+  pre_tasks:
+    - name: install mysql repo
+      yum: name=https://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm state=installed
+
+  roles:
+    - role: example.mysql
+      mysql_options: "{{mysql_opts}}"
+      tags: ['mysql']
+
